@@ -1,24 +1,26 @@
 import express from "express";
-import User from '../models/userModel'
+import User from "../models/userModel";
 import { getToken } from "../util";
 
 const router = express.Router();
 
 router.post('/signin', async(req, res) => {
-
-    const signinUser = await User.findOne({
+    console.log(User, 'User')
+    const signinUser = await User.find({
         email: req.body.email,
         password: req.body.password
-    }).then((user) => { /* Your logic here */ })
-    console.log(signinUser, 'email, password')
+    })
+
+
 
     if (signinUser) {
-
+        console.log(signinUser[0].email, 'name')
         res.send({
-            _id: signinUser.id,
-            name: signinUser.name,
-            email: signinUser.email,
-            isAdmin: signinUser.isAdmin,
+            _id: signinUser[0]._id,
+            name: signinUser[0].name,
+            email: signinUser[0].email,
+            isAdmin: signinUser[0].isAdmin,
+            signinUser,
             token: getToken(signinUser)
 
         })
@@ -38,15 +40,16 @@ router.get("/createadmin", async(req, res) => {
             email: 'enaselmahdwi@gmail.com',
             password: '1234',
             isAdmin: true,
-        });
+        })
         console.log(user, 'newUser')
-        const newUser = await user;
+        const newUser = await user.save();
         console.log(newUser, 'newUser')
         res.send(newUser);
         console.log('bbb')
 
     } catch (error) {
         console.log(error.message)
+        console.error(error.message, 'error')
         res.send({ msg: error.message })
     }
 

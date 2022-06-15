@@ -8,16 +8,18 @@ import bodyParser from "body-parser"
 
 dotenv.config();
 
-const mongodbUrl = config.MONGODB_URL;
-mongoose.connect(mongodbUrl, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true
+// const mongodbUrl = config.MONGODB_URL;
+// mongoose.connect('mongodb://localhost:27017/AMAZONA', {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//         useCreateIndex: true
 
-    }).then(() => {
-        console.log('start');
-    })
-    .catch(error => console.log(error.reason));
+//     }).then(() => {
+//         console.log('start')
+//     })
+//     .catch(error => console.log(error.reason, 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'));
+
+
 
 
 
@@ -41,3 +43,16 @@ app.get("/api/products", (req, res) => {
 
 
 app.listen(5000, () => { console.log(`server started at http://localhost:5000`) })
+const mongodbUrl = config.MONGODB_URL;
+console.log(mongodbUrl)
+mongoose.connect(mongodbUrl, {
+        useNewUrlParser: true,
+
+        useUnifiedTopology: true,
+
+
+    })
+    .then(() => {
+        console.log('start')
+    })
+    .catch(error => console.log(error.message, 'eeeeeeeeeeeeeeeeeeeeeeeeeeeeeee'));
