@@ -32,9 +32,9 @@ function App() {
           <div className="header-links">
             <a href="cart.html">Cart</a>
             {
-            userInfo ? <Link to="/profile">{console.log(userInfo.data,'userInfo.data.userSignin.name')}</Link> : <Link to='/Signin'>Signin</Link>
+            userInfo ? <Link to="/profile">  { userInfo.name }</Link> : <Link to='/Signin'>Signin</Link>
             }
-          <Link to='/Signin'>Signin</Link>
+        
           </div>
         </header>
         <aside className="sidebar">
