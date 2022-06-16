@@ -1,6 +1,6 @@
 [submodule "frontend"]
 	path = frontend
-	url = https://github.com/EnasELM/amazona/frontend
+	url = C:\\Users\\17202\\OneDrive\\Desktop\\amazona\\frontend
 [submodule "amazona"]
 	path = amazona
 	url = https://github.com/EnasELM/amazona
